@@ -1,4 +1,4 @@
-const data = require("./db.json");\
+const data = require("./db.json");
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'POST') {
         try {
