@@ -9,6 +9,7 @@ exports.handler = async (event, context) => {
 
             const requestBody = JSON.parse(event.body);
             const apiKey = process.env.COMPLYCUBE_API_KEY;
+            console.log("APIKEY" + apiKey);
             const url = 'https://api.complycube.com/v1/clients';
             const requestHeaders = {
                 'Authorization': "test_a2FIMmpZY0tEaWFLODg2OEU6ODRhMThhZDkyMDljZDUzNDYwNmEyZTc4NWVlYjE4ODg1YTY3OGQ2MGMzZWE0YTI1MDg2NmIyMTRjYmI0OTVmNA",
