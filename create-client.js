@@ -16,13 +16,24 @@ exports.handler = async (event, context) => {
                 'Content-Type': 'application/json'
             };
 
-            const res = await fetch('https://nodejs.org/api/documentation.json');
+            const res = await fetch(url,{
+                method: 'POST',
+                headers: requestHeaders,
+                body: JSON.stringify(requestBody)
+            });
             if (res.ok) {
                 const data = await res.json();
                 console.log(data);
                 return {
                     statusCode: 200,
                     body: 'worked'
+                };
+            } else {
+                const err = await res.json();
+                console.log(data);
+                return {
+                    statusCode: 501,
+                    body: 'ERR'
                 };
             }
 
