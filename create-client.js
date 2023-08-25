@@ -16,23 +16,33 @@ exports.handler = async (event, context) => {
                 'Content-Type': 'application/json'
             };
 
-            fetch(url, {
-                method: 'POST',
-                headers: requestHeaders,
-                body: JSON.stringify(requestBody)
-            }).then(response => response.json())
-              .then(result => {
-                    return {
-                        statusCode: 200,
-                        body: result,
-                    }
-                })
-              .catch(error => {
-                    return {
-                        statusCode: 500,
-                        body: error.getError().body
-                    };
-                });
+            const res = await fetch('https://nodejs.org/api/documentation.json');
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data);
+                return {
+                    statusCode: 200,
+                    body: 'worked'
+                };
+            }
+
+            // fetch(url, {
+            //     method: 'POST',
+            //     headers: requestHeaders,
+            //     body: JSON.stringify(requestBody)
+            // }).then(response => response.json())
+            //   .then(result => {
+            //         return {
+            //             statusCode: 200,
+            //             body: result,
+            //         }
+            //     })
+            //   .catch(error => {
+            //         return {
+            //             statusCode: 500,
+            //             body: error.getError().body
+            //         };
+            //     });
 
 
             return {
