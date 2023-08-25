@@ -8,11 +8,12 @@ exports.handler = async (event, context) => {
             };
 
             const requestBody = JSON.parse(event.body);
+
             const apiKey = process.env.COMPLYCUBE_API_KEY;
-            const url = 'https://api.complycube.com/v1/clients';
+            const url = 'https://api.complycube.com/v1/tokens';
             let myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("Authorization", 'test_a2FIMmpZY0tEaWFLODg2OEU6ODRhMThhZDkyMDljZDUzNDYwNmEyZTc4NWVlYjE4ODg1YTY3OGQ2MGMzZWE0YTI1MDg2NmIyMTRjYmI0OTVmNA==');
+            myHeaders.append("Authorization", apiKey);
 
             const res = await fetch(url,{
                 method: 'POST',
@@ -39,7 +40,7 @@ exports.handler = async (event, context) => {
             // Return an error response if there was an issue processing the request
             return {
                 statusCode: 500,
-                body: JSON.stringify({ error: 'Failed to process post request' }),
+                body: JSON.stringify({ error: 'Failed to process GET request' }),
             };
         }
     }
