@@ -1,10 +1,8 @@
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'GET') {
         try {
-            const API_KEY = process.env.COMPLYCUBE_API_KEY;
-
             // Process the GET request as needed
-            //const data = require('./db.json');
+            const data = require('./db.json');
 
             // Return the data as the response
             return {
