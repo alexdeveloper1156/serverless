@@ -24,14 +24,14 @@ exports.handler = async (event, context) => {
 
                 return {
                     statusCode: 200,
-                    body: data
+                    body: JSON.stringify(data)
                 };
             } else {
                 const err = await res.json();
                 console.log(err);
                 return {
                     statusCode: 501,
-                    body: err
+                    body: JSON.stringify(err)
                 };
             }
 
