@@ -9,7 +9,6 @@ exports.handler = async (event, context) => {
             };
 
             const requestBody = JSON.parse(event.body);
-
             const apiKey = process.env.COMPLYCUBE_API_KEY;
             const url = 'https://api.complycube.com/v1/clients';
             const requestHeaders = {
@@ -35,11 +34,10 @@ exports.handler = async (event, context) => {
                         body: error.getError().body
                     };
                 });
-
-
-
-
-
+            return {
+                statusCode: 500,
+                body: 'WTF'
+            };
 
 
         } catch (error) {
