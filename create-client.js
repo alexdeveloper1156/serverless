@@ -12,13 +12,17 @@ exports.handler = async (event, context) => {
             console.log("APIKEY" + apiKey);
             const url = 'https://api.complycube.com/v1/clients';
             const requestHeaders = {
-                'Authorization': "test_a2FIMmpZY0tEaWFLODg2OEU6ODRhMThhZDkyMDljZDUzNDYwNmEyZTc4NWVlYjE4ODg1YTY3OGQ2MGMzZWE0YTI1MDg2NmIyMTRjYmI0OTVmNA",
+                'Authorization': "test_a2FIMmpZY0tEaWFLODg2OEU6ODRhMThhZDkyMDljZDUzNDYwNmEyZTc4NWVlYjE4ODg1YTY3OGQ2MGMzZWE0YTI1MDg2NmIyMTRjYmI0OTVmNA==",
                 'Content-Type': 'application/json'
             };
 
+            let myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", 'test_a2FIMmpZY0tEaWFLODg2OEU6ODRhMThhZDkyMDljZDUzNDYwNmEyZTc4NWVlYjE4ODg1YTY3OGQ2MGMzZWE0YTI1MDg2NmIyMTRjYmI0OTVmNA==');
+
             const res = await fetch(url,{
                 method: 'POST',
-                headers: requestHeaders,
+                headers: myHeaders,
                 body: JSON.stringify(requestBody)
             });
             if (res.ok) {
