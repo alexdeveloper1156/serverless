@@ -1,5 +1,6 @@
 exports.handler = async (event, context) => {
-    if (event.httpMethod == "OPTIONS") {
+    if (event.httpMethod === "OPTIONS") {
+        console.log("IF OPTIONS");
 
         return {
             statusCode: 200,
