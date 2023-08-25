@@ -1,5 +1,5 @@
-const data = require("./db.json");
-exports.handler = async (event, context) => {
+import fetch from 'node-fetch';
+const handler = async (event, context)=> {
     if (event.httpMethod === 'POST') {
         try {
             // Add CORS headers
@@ -20,25 +20,25 @@ exports.handler = async (event, context) => {
                 method: 'POST',
                 headers: requestHeaders,
                 body: JSON.stringify(requestBody)
-            })
-                .then(response => response.json())
-                .then(result => {
+            }).then(response => response.json())
+              .then(result => {
                     return {
                         statusCode: 200,
                         body: result,
                     }
                 })
-                .catch(error => {
+              .catch(error => {
                     return {
                         statusCode: 500,
                         body: error.getError().body
                     };
                 });
+
+
             return {
                 statusCode: 500,
                 body: 'WTF'
             };
-
 
         } catch (error) {
             // Return an error response if there was an issue processing the request
