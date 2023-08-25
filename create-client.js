@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
-const handler = async (event, context)=> {
+const data = require("./db.json");\
+exports.handler = async (event, context) => {
     if (event.httpMethod === 'POST') {
         try {
             // Add CORS headers
