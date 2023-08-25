@@ -1,4 +1,3 @@
-const data = require("./db.json");
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'POST') {
         try {
@@ -30,7 +29,7 @@ exports.handler = async (event, context) => {
                 };
             } else {
                 const err = await res.json();
-                console.log(data);
+                console.log(err);
                 return {
                     statusCode: 501,
                     body: 'ERR'
