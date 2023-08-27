@@ -1,7 +1,5 @@
 exports.handler = async (event, context) => {
     if (event.httpMethod === "OPTIONS") {
-        console.log("IF OPTIONS");
-
         return {
             statusCode: 200,
             headers: {
@@ -14,12 +12,6 @@ exports.handler = async (event, context) => {
 
     if (event.httpMethod === 'POST') {
         try {
-            console.log('{POST!');
-            // Add CORS headers
-            const headers = {
-                'Access-Control-Allow-Origin': '*', // Replace * with the appropriate domain
-            };
-
             const requestBody = JSON.parse(event.body);
             const apiKey = process.env.COMPLYCUBE_API_KEY;
             const url = 'https://api.complycube.com/v1/clients';

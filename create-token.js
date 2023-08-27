@@ -1,12 +1,6 @@
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'POST') {
         try {
-            // Add CORS headers
-            const headers = {
-                'Access-Control-Allow-Origin': '*', // Replace * with the appropriate domain
-                'Access-Control-Allow-Headers': 'Content-Type',
-            };
-
             const requestBody = JSON.parse(event.body);
 
             const apiKey = process.env.COMPLYCUBE_API_KEY;
@@ -25,14 +19,24 @@ exports.handler = async (event, context) => {
 
                 return {
                     statusCode: 200,
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Headers": "Content-Type",
+                        "Access-Control-Allow-Methods": "GET, POST, OPTION",
+                    },
                 };
             } else {
                 const err = await res.json();
                 console.log(err);
                 return {
                     statusCode: 501,
-                    body: JSON.stringify(err)
+                    body: JSON.stringify(err),
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Headers": "Content-Type",
+                        "Access-Control-Allow-Methods": "GET, POST, OPTION",
+                    },
                 };
             }
 
@@ -41,6 +45,11 @@ exports.handler = async (event, context) => {
             return {
                 statusCode: 500,
                 body: JSON.stringify({ error: 'Failed to process GET request' }),
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "GET, POST, OPTION",
+                },
             };
         }
     }
