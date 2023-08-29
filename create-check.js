@@ -12,10 +12,12 @@ exports.handler = async (event, context) => {
 
     if (event.httpMethod === 'POST') {
         try {
+            // https://docs.complycube.com/api-reference/check-types/identity-check
+            // Required params
+            // clientId // type // documentId // livePhotoId
             const requestBody = JSON.parse(event.body);
-
             const apiKey = process.env.COMPLYCUBE_API_KEY;
-            const url = 'https://api.complycube.com/v1/tokens';
+            const url = 'https://api.complycube.com/v1/checks';
             let myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("Authorization", apiKey);
@@ -41,7 +43,7 @@ exports.handler = async (event, context) => {
                 const err = await res.json();
                 console.log(err);
                 return {
-                    statusCode: 500,
+                    statusCode: 501,
                     body: JSON.stringify(err),
                     headers: {
                         "Access-Control-Allow-Origin": "*",
@@ -52,6 +54,7 @@ exports.handler = async (event, context) => {
             }
 
         } catch (error) {
+            console.log(error);
             // Return an error response if there was an issue processing the request
             return {
                 statusCode: 500,
