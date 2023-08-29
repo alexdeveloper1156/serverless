@@ -16,6 +16,7 @@ exports.handler = async (event, context) => {
             // Required params
             // clientId // type // documentId // livePhotoId
             const requestBody = JSON.parse(event.body);
+            console.log(requestBody);
             const apiKey = process.env.COMPLYCUBE_API_KEY;
             const url = 'https://api.complycube.com/v1/checks';
             let myHeaders = new Headers();
