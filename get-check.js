@@ -12,6 +12,7 @@ exports.handler = async (event, context) => {
 
     if (event.httpMethod === 'GET') {
         try {
+            console.log(event.body);
             // https://docs.complycube.com/api-reference/checks/get-a-check
             // Required params
             // checkID
