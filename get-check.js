@@ -10,20 +10,20 @@ exports.handler = async (event, context) => {
         };
     }
 
-    if (event.httpMethod === 'POST') {
+    if (event.httpMethod === 'GET') {
         try {
-            // https://docs.complycube.com/api-reference/check-types/identity-check
+            // https://docs.complycube.com/api-reference/checks/get-a-check
             // Required params
-            // clientId // type // documentId // livePhotoId
+            // checkID
             const requestBody = JSON.parse(event.body);
             const apiKey = process.env.COMPLYCUBE_API_KEY;
-            const url = 'https://api.complycube.com/v1/checks';
+            const url = 'https://api.complycube.com/v1/checks/' + requestBody.checkId;
             let myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("Authorization", apiKey);
 
             const res = await fetch(url,{
-                method: 'POST',
+                method: 'GET',
                 headers: myHeaders,
                 body: JSON.stringify(requestBody)
             });
