@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
         };
     }
 
-    if (event.httpMethod === 'GET') {
+    if (event.httpMethod === 'POST') {
         try {
             console.log(event.body);
             // https://docs.complycube.com/api-reference/checks/get-a-check
@@ -26,7 +26,6 @@ exports.handler = async (event, context) => {
             const res = await fetch(url,{
                 method: 'GET',
                 headers: myHeaders,
-                body: JSON.stringify(requestBody)
             });
             if (res.ok) {
                 const data = await res.json();
