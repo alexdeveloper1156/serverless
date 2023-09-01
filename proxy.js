@@ -23,9 +23,7 @@ exports.handler = async (event, context) => {
             const res = await fetch(url,{
                 method: 'POST',
                 headers: myHeaders,
-                data: {
-                    clientId: requestBody.clientId,
-                }
+                data: JSON.stringify(requestBody)
             });
             if (res.ok) {
                 const data = await res.json();
