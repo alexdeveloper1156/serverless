@@ -14,7 +14,8 @@ exports.handler = async (event, context) => {
         try {
             console.log(event.body);
             const requestBody = JSON.parse(event.body);
-            const apiKey = process.env.COMPLYCUBE_API_KEY;
+            console.log(requestBody);
+            console.log(requestBody.clientId);
             const url = 'http://164.90.142.76/api/flood-insurance-api';
             let myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
