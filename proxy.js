@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
             const requestBody = JSON.parse(event.body);
             console.log(requestBody);
             console.log(requestBody.clientId);
-            const url = 'http://164.90.142.76/api/flood-insurance-api';
+            const url = 'http://164.90.142.76/api/flood-insurance-api' + '?id=' + requestBody.clientId;
             let myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
 
