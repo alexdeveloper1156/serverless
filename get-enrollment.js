@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
 
             return {
                 statusCode: 200,
-                body: JSON.stringify(requestBody),
+                body: "WORKED!",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Headers": "Content-Type",
