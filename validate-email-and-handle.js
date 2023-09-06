@@ -35,11 +35,13 @@ exports.handler = async (event, context) => {
                                 ]
                             },
                             {
-                                filters: {
-                                    propertyName: 'person_handle_name',
-                                    operator: 'EQ',
-                                    value: requestBody.person_handle_name,
-                                },
+                                filters: [
+                                    {
+                                        propertyName: 'person_handle_name',
+                                        operator: 'EQ',
+                                        value: requestBody.person_handle_name,
+                                    },
+                                ]
                             }
                         ],
                         properties: ['id','sku', 'person_primary_kyc_status', 'notary', 'is_accredited', 'accreditation'],
