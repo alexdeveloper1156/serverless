@@ -14,6 +14,16 @@ exports.handler = async (event, context) => {
         try {
             console.log(event.body);
             const requestBody = JSON.parse(event.body);
+
+            return {
+                statusCode: 200,
+                body: JSON.stringify(requestBody),
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "GET, POST, OPTION",
+                },
+            };
             const apiKey = process.env.HUBSPOT_PAT;
             const url = 'https://api.hubapi.com/crm/v3/objects/enrollment/search';
             let myHeaders = new Headers();
