@@ -43,20 +43,23 @@ exports.handler = async (event, context) => {
                         properties: ['id','sku', 'person_primary_kyc_status', 'notary', 'is_accredited', 'accreditation'],
                     }
                 );
-                console.log(requestData);
                 const res = await fetch(url,{
                     method: 'POST',
                     body: requestData,
                     headers: myHeaders,
                 });
 
-
                 if (res.ok) {
+                    let validated = true;
                     const data = await res.json();
-
+                    if (data.total > 0) {
+                        validated = false;
+                    }
                     return {
                         statusCode: 200,
-                        body: JSON.stringify(data),
+                        body: JSON.stringify({
+                            validated: validated
+                        }),
                         headers: {
                             "Access-Control-Allow-Origin": "*",
                             "Access-Control-Allow-Headers": "Content-Type",
