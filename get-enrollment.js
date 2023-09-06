@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
                     ],
                   },
                 ],
-                properties: ['sku', 'person_primary_kyc_status', 'notary', 'is_accredited', 'accreditation'],
+                properties: ['id','sku', 'person_primary_kyc_status', 'notary', 'is_accredited', 'accreditation'],
               }
             );
             console.log(requestData);
