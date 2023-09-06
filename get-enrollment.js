@@ -15,10 +15,11 @@ exports.handler = async (event, context) => {
             console.log(event.body);
             const requestBody = JSON.parse(event.body);
             const apiKey = process.env.HUBSPOT_PAT;
+            console.log(apiKey);
             const url = 'https://api.hubapi.com/crm/v3/objects/enrollment/search';
             let myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
-                myHeaders.append("Authorization", apiKey);
+                myHeaders.append("Authorization", "Bearer " + apiKey);
 
             const requestData = JSON.stringify({
                 filterGroups: [
