@@ -38,7 +38,7 @@ exports.handler = async (event, context) => {
             console.log(requestData);
             const res = await fetch(url,{
                 method: 'POST',
-                data: requestData,
+                body: requestData,
                 headers: myHeaders,
             });
 
