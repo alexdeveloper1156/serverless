@@ -32,8 +32,7 @@ exports.handler = async (event, context) => {
                                         operator: 'EQ',
                                         value: requestBody.email,
                                     },
-
-                                ],
+                                ]
                             },
                             {
                                 filters: {
