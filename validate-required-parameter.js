@@ -38,8 +38,6 @@ exports.handler = async (event, context) => {
                         properties: ['id','sku', 'person_primary_kyc_status', 'notary', 'is_accredited', 'accreditation'],
                     }
                 );
-
-                console.log(requestData);
                 const res = await fetch(url,{
                     method: 'POST',
                     body: requestData,
