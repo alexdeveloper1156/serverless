@@ -31,7 +31,7 @@ exports.handler = async (event, context) => {
                                         propertyName: requestBody.property_name,
                                         operator: 'EQ',
                                         value: requestBody.value,
-                                    },
+                                    }
                                 ]
                             }
                         ],
